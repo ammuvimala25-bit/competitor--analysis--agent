@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f8f7">
+    <title>Competitor Analysis | MarketLens</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script src="/assets/app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <a class="brand" href="/" aria-label="MarketLens home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M5 24.5V17m7 7.5V9m7 15.5V13m7 11.5V5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              <path d="M4 27h24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="brand-copy"><strong>MarketLens</strong><small>COMPETITOR INTELLIGENCE</small></span>
+        </a>
+
+        <div class="nav-label">WORKSPACE</div>
+        <nav class="nav-links">
+          <a class="nav-link" href="#agent-chat">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v11H9l-5 3v-14Z"/><path d="M8 9h8M8 12h5"/></svg>
+            <span>Chat assistant</span>
+          </a>
+          <a class="nav-link active" href="#search-panel" aria-current="page">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
+            <span>Competitor search</span>
+          </a>
+          <a class="nav-link" href="#dashboard-heading">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5h16M6.5 16V11m5 5V5m5 11V8"/></svg>
+            <span>Comparison dashboard</span>
+          </a>
+          <a class="nav-link nav-link-muted" href="#results-heading">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v13H4z"/><path d="M8 9h8M8 12h8M8 15h5"/></svg>
+            <span>Search results</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="sidebar-note">
+            <span class="note-icon" aria-hidden="true">i</span>
+            <p>Search leads are unverified. Always confirm details on the linked source.</p>
+          </div>
+          <div class="profile">
+            <span class="profile-avatar">ML</span>
+            <span><strong>Market research</strong><small>Local workspace</small></span>
+            <span class="profile-menu" aria-hidden="true">···</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumbs"><span>Workspace</span><span class="crumb-separator">/</span><strong>Competitor search</strong></div>
+          <div class="topbar-right"><span class="status-dot"></span><span>Search workspace</span></div>
+        </header>
+
+        <div class="page-content">
+          <section class="welcome-row" aria-labelledby="page-title">
+            <div>
+              <div class="eyebrow"><span class="eyebrow-line"></span> MARKET RESEARCH</div>
+              <h1 id="page-title">Competitor intelligence</h1>
+              <p class="page-intro">Discover relevant businesses and review the public sources behind every result.</p>
+            </div>
+            <div class="location-chip">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.2"/></svg>
+              <span id="location-badge">Salem, Tamil Nadu</span>
+            </div>
+          </section>
+
+          <section id="agent-chat" class="chat-workspace" aria-labelledby="chat-heading">
+            <div class="chat-header">
+              <div>
+                <div class="eyebrow"><span class="eyebrow-line"></span> CONVERSATIONAL AGENT</div>
+                <h2 id="chat-heading">Competitor research assistant</h2>
+                <p class="dashboard-subtitle">Uses the existing search, approval, collection, scoring, comparison, and insights tools. Company details remain unverified until evidence supports them.</p>
+              </div>
+              <button id="new-chat" class="discovery-action" type="button">New / clear conversation</button>
+            </div>
+            <div id="chat-mode-notice" class="chat-mode-notice">Deterministic fallback · factual answers use stored data or existing application tools. History is stored locally and scoped to this browser profile; no login is configured.</div>
+            <div id="chat-messages" class="chat-messages" role="log" aria-live="polite" aria-relevant="additions text"></div>
+            <div id="chat-status" class="chat-status" role="status" aria-live="polite" hidden><span class="loading-ring" aria-hidden="true"></span><span>Checking the request…</span></div>
+            <div id="chat-suggestions" class="chat-suggestions" aria-label="Suggested questions"></div>
+            <form id="chat-form" class="chat-form">
+              <label for="chat-input" class="field-label">Ask about competitor research</label>
+              <textarea id="chat-input" name="message" rows="2" maxlength="1500" placeholder="Try: Find software companies in Salem" required></textarea>
+              <div class="chat-form-footer"><p class="form-hint">Do not enter secrets or private information. Chat history is stored locally and scoped to this browser profile.</p><button id="chat-send" class="search-button" type="submit"><span class="button-label">Send message</span></button></div>
+            </form>
+          </section>
+
+          <section class="score-dashboard" aria-labelledby="dashboard-heading">
+            <div class="results-header dashboard-header">
+              <div>
+                <div class="eyebrow"><span class="eyebrow-line"></span> COMPARISON</div>
+                <h2 id="dashboard-heading">Competitor scoring dashboard</h2>
+                <p class="dashboard-subtitle">Scores use sourced metrics only. Unavailable data is excluded, never counted as zero.</p>
+              </div>
+              <div class="dashboard-actions">
+                <a class="discovery-action" href="/api/companies/dashboard/export.pdf" download="competitor-research.pdf">Download PDF</a>
+                <a class="discovery-action" href="/api/companies/dashboard/export.csv" download="competitor-research.csv">Export CSV</a>
+                <button id="compare-selected" class="discovery-action" type="button" disabled>Compare selected</button>
+              </div>
+            </div>
+            <p id="dashboard-method" class="dashboard-method"></p>
+            <div id="dashboard-kpis" class="dashboard-kpis" aria-label="Competitor dashboard metrics"></div>
+            <p class="dashboard-kpi-note">Workspace candidate counts reflect candidates loaded in this browser session; approved, analyzed, and evidence coverage figures use stored approved records.</p>
+            <div id="dashboard-summary" class="dashboard-summary" aria-live="polite"></div>
+            <div class="dashboard-controls">
+              <label class="dashboard-control">
+                <span>Search approved competitors</span>
+                <input id="dashboard-search" type="search" autocomplete="off" placeholder="Company or website">
+              </label>
+              <label class="dashboard-control">
+                <span>Analysis status</span>
+                <select id="dashboard-filter">
+                  <option value="all">All approved</option>
+                  <option value="analyzed">Analyzed</option>
+                  <option value="not-analyzed">Not analyzed</option>
+                </select>
+              </label>
+              <label class="dashboard-control">
+                <span>Sort by</span>
+                <select id="dashboard-sort">
+                  <option value="name">Company name</option>
+                  <option value="score">Overall score</option>
+                  <option value="coverage">Evidence coverage</option>
+                  <option value="refreshed">Last refreshed</option>
+                </select>
+              </label>
+            </div>
+            <div class="dashboard-table-wrap">
+              <table class="dashboard-table">
+                <caption>Approved competitors and sourced score availability</caption>
+                <thead><tr><th scope="col">Select</th><th scope="col">Competitor</th><th scope="col">Overall score</th><th scope="col">Category scores</th><th scope="col">Data completeness</th><th scope="col">Threat</th><th scope="col">Last analysis</th><th scope="col">Unavailable categories</th><th scope="col">Insights</th></tr></thead>
+                <tbody id="dashboard-rows"><tr><td colspan="9">Loading approved competitors…</td></tr></tbody>
+              </table>
+            </div>
+            <div id="comparison-panel" class="comparison-panel" hidden aria-live="polite"></div>
+            <section id="insights-panel" class="insights-panel" hidden aria-labelledby="insights-heading" aria-live="polite">
+              <h3 id="insights-heading">Evidence-based insights</h3>
+              <div id="insights-output"></div>
+            </section>
+          </section>
+
+          <section class="search-card" id="search-panel" aria-labelledby="search-heading">
+            <div class="card-heading">
+              <div class="heading-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
+              </div>
+              <div><h2 id="search-heading">Find competitors</h2><p>Describe the market you want to explore.</p></div>
+              <span class="provider-label"><span class="provider-dot"></span> Public web search</span>
+            </div>
+
+            <form id="search-form">
+              <div class="field-grid">
+                <label class="field">
+                  <span class="field-label">Industry <span class="optional">OPTIONAL</span></span>
+                  <span class="input-wrap">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5h17M5.5 20.5V8l6.5-4 6.5 4v12.5M9 20.5v-5h6v5M9 9.5h.01M12 9.5h.01M15 9.5h.01"/></svg>
+                    <input id="industry" name="industry" type="text" maxlength="60" placeholder="e.g. IT services">
+                  </span>
+                </label>
+                <label class="field">
+                  <span class="field-label">Company name <span class="optional">OPTIONAL</span></span>
+                  <span class="input-wrap">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
+                    <input id="company" name="company" type="text" maxlength="60" placeholder="e.g. software firms">
+                  </span>
+                </label>
+                <label class="field">
+                  <span class="field-label">Location</span>
+                  <span class="input-wrap">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.2"/></svg>
+                    <input id="location" name="location" type="text" maxlength="60" value="Salem, Tamil Nadu" required>
+                  </span>
+                </label>
+              </div>
+              <div class="form-footer">
+                <p class="form-hint"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg> Results come from public web sources and may need verification.</p>
+                <button class="search-button" id="search-button" type="submit">
+                  <span class="button-spinner" aria-hidden="true"></span>
+                  <svg class="button-search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
+                  <span class="button-label">Search competitors</span>
+                  <span class="button-arrow" aria-hidden="true">→</span>
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <section class="search-card" aria-labelledby="manual-heading">
+            <div class="card-heading">
+              <div class="heading-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.1 0l3-3A5 5 0 0 0 13 2.9l-1.7 1.7M14 11a5 5 0 0 0-7.1 0l-3 3A5 5 0 0 0 11 21.1l1.7-1.7"/></svg>
+              </div>
+              <div><h2 id="manual-heading">Use company URLs manually</h2><p>Continue with URLs you already know if public search is unavailable.</p></div>
+            </div>
+            <form id="manual-url-form">
+              <label class="field">
+                <span class="field-label">Company website URLs</span>
+                <textarea id="manual-urls" name="urls" rows="3" placeholder="https://example.com&#10;https://another-company.com" aria-describedby="manual-hint"></textarea>
+              </label>
+              <div class="form-footer">
+                <p class="form-hint" id="manual-hint">Enter one http or https URL per line. These remain user supplied and unverified.</p>
+                <button class="search-button" type="submit"><span class="button-label">Review URLs</span></button>
+              </div>
+            </form>
+            <form id="manual-competitor-form" class="manual-competitor-form">
+              <h3 class="manual-subheading">Add a competitor candidate</h3>
+              <div class="field-grid manual-fields">
+                <label class="field">
+                  <span class="field-label">Company name</span>
+                  <span class="input-wrap"><input id="manual-company-name" name="company_name" type="text" maxlength="200" required placeholder="Name as you know it"></span>
+                </label>
+                <label class="field">
+                  <span class="field-label">Website URL</span>
+                  <span class="input-wrap"><input id="manual-company-url" name="website_url" type="url" required placeholder="https://company.example"></span>
+                </label>
+              </div>
+              <div class="form-footer">
+                <p class="form-hint">Manually added details are user supplied, unverified, and ranked with the same visible rules.</p>
+                <button class="search-button" type="submit"><span class="button-label">Add candidate</span></button>
+              </div>
+            </form>
+          </section>
+
+          <section class="results-section" aria-labelledby="results-heading" aria-live="polite">
+            <div class="results-header">
+              <div>
+                <div class="eyebrow"><span class="eyebrow-line"></span> DISCOVERY</div>
+                <h2 id="results-heading">Search results</h2>
+              </div>
+              <span class="result-count" id="result-count" hidden>0 results</span>
+            </div>
+
+            <div id="results-content">
+              <div class="empty-state">
+                <div class="empty-illustration" aria-hidden="true">
+                  <span class="illustration-orbit orbit-one"></span>
+                  <span class="illustration-orbit orbit-two"></span>
+                  <span class="illustration-center">
+                    <svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
+                  </span>
+                  <span class="spark spark-one"></span><span class="spark spark-two"></span>
+                </div>
+                <h3>Your next insight starts here</h3>
+                <p>Choose an industry or company type, add a location, and search public web sources to discover competitor leads.</p>
+                <span class="empty-tip"><span class="tip-dot"></span> Start with a focused search for more relevant results</span>
+              </div>
+            </div>
+            <section id="approved-competitors" class="approved-section" aria-labelledby="approved-heading">
+              <h3 class="approved-heading" id="approved-heading">Approved competitors (0)</h3>
+              <div id="approved-list"><p class="approved-empty">Approve candidates to add them here. Remove any before analysis.</p></div>
+              <div id="competitor-analysis" class="competitor-analysis" hidden aria-live="polite"></div>
+            </section>
+          </section>
+          <footer class="page-footer"><span>MarketLens Competitor Analysis</span><span>Public-source results are leads, not verified profiles.</span></footer>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
