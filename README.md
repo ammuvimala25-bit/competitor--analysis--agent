@@ -1,37 +1,43 @@
-# Competitor Analysis AI Agent
+# Vimala S. Portfolio
 
-FastAPI application for discovering, reviewing, and comparing competitor candidates using public-source evidence. Search results remain unverified and pending until a user explicitly approves them. Missing information is reported as unavailable, not zero.
+This is the existing static portfolio. Its chatbot now answers from a small, verified knowledge base in `script.js` using vanilla JavaScript keyword matching. It does not call an AI model, external API, serverless function, or `/api/chat` endpoint. The portfolio, profile image, resume, and section layout remain part of the same site.
 
-## Install and run
+## Run the portfolio locally
 
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
-uvicorn backend.main:app --reload
-```
+No Python backend or API key is needed for the browser-only chatbot.
 
-Open `http://127.0.0.1:8000`. The frontend and API are served from the same origin; the application does not enable cross-origin access by default.
-
-## Configuration
-
-Configuration is read from the server process environment. The checked-in `.env.example` lists supported variables but is not automatically loaded by the application.
-
-- Public DDGS search is the default and does not require a key.
-- Brave Search is optional; set `COMPANY_SEARCH_PROVIDER=brave` and `BRAVE_SEARCH_API_KEY`.
-- PageSpeed Insights is optional and can run without a key, subject to Google's quota; `PAGESPEED_API_KEY` is optional.
-- AI-assisted intent/insight selection is optional; configure `INSIGHTS_API_URL`, `INSIGHTS_MODEL`, and, when needed, `INSIGHTS_API_KEY`.
-- `COMPETITOR_STORE_PATH` optionally selects a local JSON store. Otherwise records are stored in `backend/data/competitors.json`.
-
-Keep provider keys in the server environment. Do not expose them in frontend code, reports, logs, or source control. Website analysis only requests public HTTP(S) pages and rejects non-public addresses and unsafe redirects.
-
-## Evidence and exports
-
-The comparison dashboard and downloadable PDF/CSV reports are generated from approved local records and their stored evidence. Reports include collection timestamps, sources, missing-data explanations, and limitations; they do not fill unknown values or fabricate competitor details. A PDF is generated with ReportLab when requested.
-
-## Tests
+From the project root, either use the VS Code Live Server extension or run:
 
 ```powershell
-python -m pip install pytest
-python -m pytest -q
+py -m http.server 5500
 ```
+
+Then open <http://127.0.0.1:5500>. The chatbot answers from the project facts stored in `script.js` and works on the deployed static Netlify site as well.
+
+## Chatbot knowledge
+
+The local knowledge is based on `index.html` and `assets/resume.pdf`. It includes education, skills, the project names verified in those files, and the email, phone, LinkedIn, and GitHub links already in the portfolio. Spoken-language proficiency is not listed in those source files, so the chatbot says it is unspecified. Project labels that do not appear in the portfolio/resume are not treated as verified facts.
+
+## Existing FastAPI backend
+
+The `backend/` FastAPI service, `render.yaml`, and backend tests are retained in the project, but the portfolio chatbot no longer calls that service. They can still be used independently; deploying them is not required for this chatbot.
+
+For independent local API development, the backend reads `backend/.env` or hosting environment variables. Use `GROQ_API_KEY`, `AI_API_URL`, and `AI_MODEL`; `AI_API_KEY` remains accepted as a legacy fallback. Keep the real key only in the backend environment and never commit `.env` files. The Render manifest configures the separate API service and Netlify CORS origin but is not used by the browser-only chat flow.
+
+To run the retained API separately, from a terminal in `backend/`:
+
+```powershell
+python -m uvicorn main:app --reload --host 127.0.0.1 --port 8000
+```
+
+The health route is `/api/health` and the independent chat route is `/api/chat`.
+
+## Checks
+
+With the project virtual environment active, run the existing mocked backend checks from the project root:
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest backend\tests -q
+```
+
+These tests exercise the retained FastAPI service; they do not power the static portfolio chatbot.

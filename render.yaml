@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: vimala-portfolio-chat-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      - key: GROQ_API_KEY
+        sync: false
+      - key: AI_API_URL
+        value: https://api.groq.com/openai/v1/chat/completions
+      - key: AI_MODEL
+        value: openai/gpt-oss-120b
+      - key: CORS_ORIGINS
+        value: https://tangerine-madeleine-fa3898.netlify.app
